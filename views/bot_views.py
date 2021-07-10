@@ -12,13 +12,11 @@ bot = telebot.TeleBot(KEY)
 
 @bot.message_handler(commands= ["start"])
 def start(message):
-    first_name = message.from_user.first_name
-    resp = f"*Welcome {first_name}!*👋"
-    resp += "\n\nI am 🤖*WaxCoinsBot* and I can show you the current prices of coins of the WAX ecosystem, check your acccount status and "
-    resp += "calculate the value of 'X' amount of coins in WAX and USD 📊"
-    resp += "\n\nTo understand how I work, please press /help"
-    resp += "\n\n*WAX address for donations:* [ddgra.wam](https://wax.bloks.io/wallet/transfer) ❤️"
-    bot.reply_to(message, resp, parse_mode='MARKDOWN')
+    bot.reply_to(message, f"*Welcome {message.from_user.first_name}!*👋"
+        "\n\nI am 🤖*WaxCoinsBot* and I can show you the current prices of coins of the WAX ecosystem, check your acccount status and "
+        "calculate the value of 'X' amount of coins in WAX and USD 📊"
+        "\n\nTo understand how I work, please press /help"
+        "\n\n*WAX address for donations:* [ddgra.wam](https://wax.bloks.io/wallet/transfer) ❤️", parse_mode='MARKDOWN')
 
 @bot.message_handler(commands= ["help"])
 def help(message):
