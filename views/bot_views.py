@@ -20,13 +20,12 @@ def start(message):
 
 @bot.message_handler(commands= ["help"])
 def help(message):
-    resp = "Hi👋, how are you? to make your queries please use the following commands✅:"
-    resp += "\n\n/acc - To check your CPU, RAM and NET status"
-    resp += '\n/calc - To check the price of "X" amount of coins'
-    resp += "\n/coinp - To check the price of any coin"
-    resp += "\n/parp - To check the price of a pair"
-    resp += '\n\n<b>WAX address for donations:</b> <a href="https://wax.bloks.io/wallet/transfer"><b>ddgra.wam</b></a> ❤️'
-    bot.reply_to(message, resp, parse_mode='HTML')
+    bot.reply_to(message, "Hi👋, how are you? to make your queries please use the following commands✅:"
+        "\n\n/acc - To check your CPU, RAM and NET status"
+        '\n/calc - To check the price of "X" amount of coins'
+        "\n/coinp - To check the price of any coin"
+        "\n/parp - To check the price of a pair"
+        '\n\n<b>WAX address for donations:</b> <a href="https://wax.bloks.io/wallet/transfer"><b>ddgra.wam</b></a> ❤️', parse_mode='HTML')
 
 #Account status
 @bot.message_handler(commands=['acc'])
@@ -68,10 +67,10 @@ def acc(message):
                 if net_por < 0:
                     net_por = 0
                 total_balance = round(account_balance + cpu_stk + net_stk, DEC_ACC)
-                bot.send_message(chat_id,f'*🙍‍♂️Account: {account}\n💰Available balance: {account_balance} WAX\n💰Total balance: {total_balance} WAX*\
-                \n\n*🖥CPU*\n- Status: {cpu_por}%\n- Available: {cpu_ava}%\n*💰Staked: {cpu_stk} WAX*\
-                \n\n*📶NET*\n- Status: {net_por}%\n- Available: {net_ava}%\n*💰Staked: {net_stk} WAX*\
-                \n\n*💾RAM*\n- Status: {ram_por}%\n- Available: {ram_ava}%',parse_mode='MARKDOWN')
+                bot.send_message(chat_id,f"*🙍‍♂️Account: {account}\n💰Available balance: {account_balance} WAX\n💰Total balance: {total_balance} WAX*"
+                    f"\n\n*🖥CPU*\n- Status: {cpu_por}%\n- Available: {cpu_ava}%\n*💰Staked: {cpu_stk} WAX*"
+                    f"\n\n*📶NET*\n- Status: {net_por}%\n- Available: {net_ava}%\n*💰Staked: {net_stk} WAX*"
+                    f"\n\n*💾RAM*\n- Status: {ram_por}%\n- Available: {ram_ava}%",parse_mode='MARKDOWN')
             else:
                 bot.reply_to(message,"*‼️This account doesn't exist*", parse_mode='MARKDOWN')
         else:
@@ -109,12 +108,12 @@ def parp(message):
                             break
                     priceusd = round(priceusd*waxusd,DEC)
 
-                bot.reply_to(message,f"*💎Pair: {quote_token}/{base_token}*\
-                \n\n🟡Precio actual: {price} {base_token}\
-                \n💰Precio USD: ${priceusd}", parse_mode='MARKDOWN')
+                bot.reply_to(message,f"*💎Pair: {quote_token}/{base_token}*"
+                    f"\n\n🟡Precio actual: {price} {base_token}"
+                    f"\n💰Precio USD: ${priceusd}", parse_mode='MARKDOWN')
             else:
-                bot.reply_to(message,"Sorry, I couldn't find the pair you were looking for😢\
-                \n\nIf you need help press /help.")
+                bot.reply_to(message,"Sorry, I couldn't find the pair you were looking for😢"
+                    "\n\nIf you need help press /help.")
         else:
             bot.reply_to(message,"*‼️Command format*\n\n/parp TLM/WAX\n/parp AETHER/WAX\n\nIf you need help press /help.", parse_mode='MARKDOWN')
     except:
@@ -146,13 +145,13 @@ def calc(message):
             if price != None:
                 pricewax = round(price*cantidad,DEC)
                 priceusd = round(pricewax*waxusd,DEC)
-                bot.reply_to(message,f"*💎Coin: {token}*\
-                \n👌Quantity: {cantidad}\
-                \n\n🟡Price WAX: {pricewax} WAX\
-                \n\n💰Price USD: ${priceusd}", parse_mode='MARKDOWN')
+                bot.reply_to(message,f"*💎Coin: {token}*"
+                    f"\n👌Quantity: {cantidad}"
+                    f"\n\n🟡Price WAX: {pricewax} WAX"
+                    f"\n\n💰Price USD: ${priceusd}", parse_mode='MARKDOWN')
             else:
-                bot.reply_to(message,"Sorry, I couldn't find the coin you were looking for😢\
-                \n\nIf you need help press /help.")
+                bot.reply_to(message,"Sorry, I couldn't find the coin you were looking for😢"
+                    "\n\nIf you need help press /help.")
         else:
             bot.reply_to(message,"*‼️Command format*\n\n/calc 15 AETHER\n/calc 10 TLM\n\nIf you need help press /help.", parse_mode='MARKDOWN')
     except:
@@ -182,12 +181,12 @@ def coinp(message):
                         break
                 if price != None:
                     priceusd = round(price*waxusd,DEC)
-                    bot.reply_to(message,f"*💎Coin: {coin}*\
-                    \n\n🟡Price WAX: {price} WAX\
-                    \n\n💰Price USD: ${priceusd}", parse_mode='MARKDOWN')
+                    bot.reply_to(message,f"*💎Coin: {coin}*"
+                        f"\n\n🟡Price WAX: {price} WAX"
+                        f"\n\n💰Price USD: ${priceusd}", parse_mode='MARKDOWN')
                 else:
-                    bot.reply_to(message,"Sorry, I couldn't find the coin you were looking for😢\
-                    \n\nIf you need help press /help.")
+                    bot.reply_to(message,"Sorry, I couldn't find the coin you were looking for😢"
+                        "\n\nIf you need help press /help.")
         else:
             bot.reply_to(message,"*‼️Command format*\n\n/coinp AETHER\n/coinp TLM\n\nIf you need help press /help.", parse_mode='MARKDOWN')
     except:
